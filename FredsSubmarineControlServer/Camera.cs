@@ -7,6 +7,7 @@ namespace FredsSubmarineControlServer
     {
         private readonly string devicePath;
         Process? streamingProcess, stillImageProcess;
+        bool streamingExitAllowed = false;
         public Camera(string devicePath = "/dev/video0")
         {
             this.devicePath = devicePath;
@@ -18,26 +19,44 @@ namespace FredsSubmarineControlServer
             StopStreaming();
             TakeStillImage();
             StartStreaming();
+
+            //TODO: stop streaming on exit??
         }
 
-        void StartStreaming()
+        public void StartStreaming()
         {
+            streamingExitAllowed = false;
             streamingProcess = new Process();
             streamingProcess.StartInfo.FileName = "/bin/bash";
             streamingProcess.StartInfo.Arguments = "streamcamera.sh " + devicePath;
             streamingProcess.StartInfo.CreateNoWindow = true;
             streamingProcess.StartInfo.WorkingDirectory = Environment.CurrentDirectory;
+            streamingProcess.EnableRaisingEvents = true;
+            streamingProcess.Exited += StreamingProcess_Exited;
             streamingProcess.Start();
         }
 
-        void StopStreaming()
+        private void StreamingProcess_Exited(object? sender, EventArgs e)
         {
-            Syscall.kill(streamingProcess.Id, Signum.SIGINT);
-            if (!streamingProcess.WaitForExit(3000))
+            if(!streamingExitAllowed)
             {
-                streamingProcess.Kill();
+                //restart streaming if it exited unexpectedly
+                StartStreaming();
             }
-            streamingProcess.WaitForExit();
+        }
+
+        public void StopStreaming()
+        {
+            if (streamingProcess != null)
+            {
+                streamingExitAllowed = true;
+                Syscall.kill(streamingProcess.Id, Signum.SIGINT);
+                if (!streamingProcess.WaitForExit(3000))
+                {
+                    streamingProcess.Kill();
+                }
+                streamingProcess.WaitForExit();
+            }
         }
 
         void TakeStillImage()
@@ -52,6 +71,11 @@ namespace FredsSubmarineControlServer
             {
                 stillImageProcess.Kill();
             }
+        }
+
+        public void LoadImage()
+        {
+            //TODO: load image so we can send it to control client
         }
     }
 }

@@ -6,16 +6,15 @@ namespace FredsSubmarineControlServer
 {
     internal class Program
     {
-        static Camera camera;
+        static Camera? camera;
+        static PwmMotorControl? motorControl;
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-
             camera = new Camera();
+            motorControl = new PwmMotorControl();
 
-
-            
+            //TODO: server for receiving control messages
         }
     }
 }
