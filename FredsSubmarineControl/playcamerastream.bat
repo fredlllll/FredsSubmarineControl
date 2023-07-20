@@ -1,0 +1,1 @@
+﻿ffplay -fflags nobuffer -flags low_delay -probesize 32 -analyzeduration 1 -strict experimental -framedrop -f mpegts -vf setpts=0 tcp://192.168.178.56:10000

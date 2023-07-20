@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FredsSubmarineControl", "FredsSubmarineControl\FredsSubmarineControl.csproj", "{3F4B785A-7FB1-4026-BE1B-4803A3DE44D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FredsSubmarineControlServer", "FredsSubmarineControlServer\FredsSubmarineControlServer.csproj", "{1EDD9E81-EE50-4DDF-99A9-43282EE57E8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F4B785A-7FB1-4026-BE1B-4803A3DE44D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4B785A-7FB1-4026-BE1B-4803A3DE44D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4B785A-7FB1-4026-BE1B-4803A3DE44D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4B785A-7FB1-4026-BE1B-4803A3DE44D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EDD9E81-EE50-4DDF-99A9-43282EE57E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EDD9E81-EE50-4DDF-99A9-43282EE57E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EDD9E81-EE50-4DDF-99A9-43282EE57E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EDD9E81-EE50-4DDF-99A9-43282EE57E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CDB222D-4762-4CF6-9681-65345655C238}
+	EndGlobalSection
+EndGlobal
